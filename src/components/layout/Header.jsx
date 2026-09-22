@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { Menu, X } from 'lucide-react';
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Close menu on Escape key
@@ -58,15 +60,23 @@ export default function Header() {
             aria-label="Main Navigation"
             className="hidden md:flex items-center gap-7 text-sm font-medium text-neutral-600"
           >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="transition-colors hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs ${
+                    isActive
+                      ? 'text-neutral-950 font-semibold border-b-2 border-[var(--color-accent)] pb-0.5'
+                      : 'hover:text-neutral-950'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA */}
@@ -103,16 +113,25 @@ export default function Header() {
           className="fixed inset-x-0 top-[65px] bottom-0 z-40 bg-[var(--color-bg)] px-6 py-8 border-t border-[var(--color-border)] flex flex-col justify-between md:hidden"
         >
           <nav aria-label="Mobile Navigation" className="flex flex-col space-y-4">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-medium tracking-tight text-neutral-900 hover:text-[var(--color-accent)] py-1 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`text-2xl font-medium tracking-tight py-1 transition-colors flex items-center justify-between ${
+                    isActive
+                      ? 'text-[var(--color-accent)] font-semibold'
+                      : 'text-neutral-900 hover:text-[var(--color-accent)]'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  {isActive && <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="pt-6 border-t border-neutral-200">
