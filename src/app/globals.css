@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Color System */
+    --color-bg: #fbfbfb;
+    --color-surface: #ffffff;
+    --color-surface-subtle: #f4f4f5;
+    --color-border: #e4e4e7;
+    --color-border-subtle: #ececed;
+    --color-text-primary: #121316;
+    --color-text-secondary: #525866;
+    --color-text-muted: #71717a;
+    
+    /* Configurable Brand Accent (Deep Studio Electric Blue) */
+    --color-accent: #0b4fba;
+    --color-accent-hover: #083c8e;
+    --color-accent-subtle: #edf4fe;
+    
+    /* Contrast dark surfaces */
+    --color-dark-bg: #0d0f12;
+    --color-dark-surface: #14171d;
+    --color-dark-border: #222630;
+    --color-dark-text-primary: #f4f4f6;
+    --color-dark-text-muted: #8b92a1;
+
+    /* Layout metrics */
+    --container-max-width: 1200px;
+    --container-padding-x: clamp(1rem, 4vw, 2.5rem);
+    --section-spacing-y: clamp(3.5rem, 7vw, 6.5rem);
+    --section-spacing-compact: clamp(2rem, 4vw, 3.5rem);
+    
+    /* Radius & Transitions */
+    --radius-subtle: 4px;
+    --radius-default: 6px;
+    --radius-pill: 9999px;
+    --transition-timing: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-duration: 180ms;
+  }
+}
+
+/* Accessibility & Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Subtle CSS Entrance Animations */
+@keyframes studioFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes studioFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-reveal-1 {
+  animation: studioFadeUp 500ms var(--transition-timing) 50ms both;
+}
+
+.animate-reveal-2 {
+  animation: studioFadeUp 550ms var(--transition-timing) 120ms both;
+}
+
+.animate-reveal-3 {
+  animation: studioFadeUp 600ms var(--transition-timing) 200ms both;
+}
+
+.animate-reveal-4 {
+  animation: studioFadeUp 650ms var(--transition-timing) 280ms both;
+}
+
+.animate-reveal-visual {
+  animation: studioFadeIn 700ms var(--transition-timing) 220ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
