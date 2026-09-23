@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import AnimatedLogo from '@/components/ui/AnimatedLogo';
 
 const FOOTER_NAVIGATION = [
   { label: 'Services', href: '/services' },
@@ -48,11 +49,10 @@ export default function Footer() {
         {/* Middle Footer: Links & Services Columns */}
         <div className="py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 text-xs">
           <div className="lg:col-span-4 space-y-3">
-            <div className="flex items-center gap-2 text-white font-semibold text-base tracking-tight">
-              <span className="h-2 w-2 rounded-full bg-white inline-block" />
-              <span>Susthir Digital</span>
-            </div>
-            <p className="text-neutral-400 max-w-xs leading-relaxed">
+            <Link href="/" className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xs" aria-label="Susthir Digital Home">
+              <AnimatedLogo size="md" theme="dark" />
+            </Link>
+            <p className="text-neutral-400 max-w-xs leading-relaxed pt-1">
               Websites, ecommerce experiences and custom web applications for growing businesses.
             </p>
           </div>

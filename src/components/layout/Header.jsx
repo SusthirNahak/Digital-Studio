@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import AnimatedLogo from '@/components/ui/AnimatedLogo';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
@@ -56,10 +57,10 @@ export default function Header() {
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="group inline-flex items-center gap-2.5 text-base sm:text-lg font-semibold tracking-tight text-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs"
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs"
+            aria-label="Susthir Digital Home"
           >
-            <span className="inline-block h-2.5 w-2.5 rounded-full bg-neutral-900 transition-transform group-hover:scale-125" />
-            <span className="font-bold">Susthir Digital</span>
+            <AnimatedLogo size="md" />
           </Link>
 
           {/* Desktop Navigation */}
