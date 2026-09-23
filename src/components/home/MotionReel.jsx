@@ -21,6 +21,14 @@ import {
   RotateCcw,
   Sliders,
   CheckCircle2,
+  ShoppingBag,
+  Cpu,
+  Building2,
+  Gauge,
+  MessageSquare,
+  Smartphone,
+  Laptop,
+  Flame,
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -29,51 +37,97 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const HOTSPOTS = [
+// 4 High-Converting Freelance Project Channels
+const SHOWREEL_CHANNELS = [
   {
-    id: 'physics',
-    x: '24%',
-    y: '38%',
-    label: 'Physics-Based Motion',
-    tech: 'GSAP + Web Animations API',
-    desc: 'Fluid springs and inertial scrolling calculated per frame without stutter.',
+    id: 'shopify',
+    label: 'Shopify E-Commerce',
+    badge: '🛍️ DTC STORE',
+    title: 'Natural Elixirs · Ayurvedic Storefront',
+    subtitle: 'High-conversion Shopify store with 1-click instant WhatsApp checkout and 1.2s cart speed.',
+    image: '/assets/home/freelance_reel_showcase.jpg',
+    metric: '+142%',
+    metricLabel: 'Sales Conversion',
+    speedScore: '99 / 100',
+    timeline: 'Delivered in 2.5 Weeks',
+    features: [
+      'Instant slide-out ajax cart',
+      'Direct WhatsApp checkout button',
+      'Razorpay & Cash on Delivery',
+      'Optimized for 90%+ mobile traffic',
+    ],
+    clientQuote: '“Sales jumped within the first 10 days of launching the new Shopify store.”',
   },
   {
-    id: 'spatial',
-    x: '68%',
-    y: '28%',
-    label: '3D Spatial Geometry',
-    tech: 'WebGL & CSS 3D Transforms',
-    desc: 'Hardware-accelerated perspective rendering with realistic light diffusion.',
+    id: 'nextjs',
+    label: 'Next.js 15 Web App',
+    badge: '⚡ FULL-STACK SAAS',
+    title: 'Genrise Tech · Analytics & Workflow Platform',
+    subtitle: 'Modern web app with sub-400ms server rendering, dynamic dashboards, and real-time database sync.',
+    image: '/assets/projects/genrise/cover.webp',
+    metric: '< 0.4s',
+    metricLabel: 'Page Load Time',
+    speedScore: '100 / 100',
+    timeline: 'Delivered in 4 Weeks',
+    features: [
+      'Next.js 15 App Router & React 19',
+      'Zero layout shift (CLS = 0.00)',
+      'Sub-second API response times',
+      'Clean TypeScript codebase',
+    ],
+    clientQuote: '“Susthir delivered a web app that loads faster than our competitors’ native apps.”',
   },
   {
-    id: 'performance',
-    x: '52%',
-    y: '72%',
-    label: 'Sub-50ms Response',
-    tech: 'Next.js App Router & React 19',
-    desc: 'Zero-delay route transitions with server-driven streaming architecture.',
+    id: 'b2b',
+    label: 'B2B / Healthcare Site',
+    badge: '🏥 MEDICAL & CORPORATE',
+    title: 'Hillstone Dental Lab · Practice Portal',
+    subtitle: 'Professional B2B clinical website with online doctor case submission, digital prescription upload, and local SEO.',
+    image: '/assets/projects/hillstone-dental-lab/cover.webp',
+    metric: '3.4x',
+    metricLabel: 'Client Inquiries',
+    speedScore: '98 / 100',
+    timeline: 'Delivered in 2 Weeks',
+    features: [
+      'Doctor inquiry & case upload form',
+      'Ranked #1 for local clinic search',
+      'Mobile-first responsive UX',
+      'Custom WordPress ACF integration',
+    ],
+    clientQuote: '“We receive consistent daily lab case inquiries directly through the website now.”',
   },
-];
-
-const PRESET_MODES = [
-  { id: 'cinematic', label: 'Cinematic Reel', icon: Play },
-  { id: 'interactive', label: 'Interactive Nodes', icon: Sliders },
-  { id: 'metrics', label: 'Performance Telemetry', icon: Activity },
+  {
+    id: 'redesign',
+    label: 'Speed & Redesign Overhaul',
+    badge: '🚀 PERFORMANCE RECOVERY',
+    title: 'Neoplan Foods · Modern Replatforming',
+    subtitle: 'Replaced a slow 5.2-second WordPress site with a fast, modern responsive design that loads in 520ms.',
+    image: '/assets/projects/neoplan-foods/cover.webp',
+    metric: '-78%',
+    metricLabel: 'Bounce Rate Drop',
+    speedScore: '100 / 100',
+    timeline: 'Delivered in 10 Days',
+    features: [
+      'Google Lighthouse: 34 → 100',
+      'Image asset compression & WebP',
+      'Streamlined lead generation forms',
+      'Sub-600ms Time to First Byte',
+    ],
+    clientQuote: '“Our bounce rate dropped immediately, and customers frequently compliment the speed.”',
+  },
 ];
 
 export default function MotionReel() {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [activeHotspot, setActiveHotspot] = useState(HOTSPOTS[0]);
-  const [currentMode, setCurrentMode] = useState('cinematic');
-  const [progress, setProgress] = useState(38);
+  const [currentChannelIndex, setCurrentChannelIndex] = useState(0);
+  const [activeDevice, setActiveDevice] = useState('desktop'); // 'desktop' | 'mobile'
+  const [progress, setProgress] = useState(25);
 
   const containerRef = useRef(null);
   const stageRef = useRef(null);
-  const progressBarRef = useRef(null);
   const waveformRef = useRef(null);
-  const canvasRef = useRef(null);
+
+  const currentChannel = SHOWREEL_CHANNELS[currentChannelIndex];
 
   // GSAP ScrollTrigger for entering stage
   useEffect(() => {
@@ -83,12 +137,12 @@ export default function MotionReel() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         stageRef.current,
-        { opacity: 0, scale: 0.96, y: 30 },
+        { opacity: 0, scale: 0.97, y: 25 },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 1,
+          duration: 0.9,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
@@ -106,8 +160,15 @@ export default function MotionReel() {
     if (!isPlaying) return;
 
     const interval = setInterval(() => {
-      setProgress((prev) => (prev >= 100 ? 0 : Number((prev + 0.4).toFixed(1))));
-    }, 100);
+      setProgress((prev) => {
+        if (prev >= 100) {
+          // Auto advance to next channel for an exciting reel experience!
+          setCurrentChannelIndex((c) => (c + 1) % SHOWREEL_CHANNELS.length);
+          return 0;
+        }
+        return Number((prev + 0.5).toFixed(1));
+      });
+    }, 120);
 
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -132,86 +193,14 @@ export default function MotionReel() {
     return () => ctx.revert();
   }, [isPlaying]);
 
-  // Ambient Dynamic Motion Canvas (Sine Lattice Streams)
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-    let time = 0;
-
-    const resize = () => {
-      if (canvas.parentElement) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      }
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const render = () => {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      if (isPlaying) {
-        time += 0.02;
-      }
-
-      // Draw subtle luminous wave ribbons
-      const lines = 4;
-      for (let i = 0; i < lines; i++) {
-        ctx.beginPath();
-        ctx.lineWidth = 1.2;
-        ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 - i * 0.03})`;
-
-        for (let x = 0; x < canvas.width; x += 15) {
-          const y =
-            canvas.height * 0.6 +
-            Math.sin(x * 0.008 + time + i * 0.8) * 35 +
-            Math.cos(x * 0.004 - time * 0.5) * 20;
-
-          if (x === 0) {
-            ctx.moveTo(x, y);
-          } else {
-            ctx.lineTo(x, y);
-          }
-        }
-        ctx.stroke();
-      }
-
-      // Floating interactive nodes
-      if (currentMode === 'interactive') {
-        HOTSPOTS.forEach((spot, idx) => {
-          const posX = (parseFloat(spot.x) / 100) * canvas.width;
-          const posY = (parseFloat(spot.y) / 100) * canvas.height;
-
-          // Pulse ring
-          const pulseSize = 14 + Math.sin(time * 3 + idx) * 4;
-          ctx.beginPath();
-          ctx.arc(posX, posY, pulseSize, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-
-          // Center dot
-          ctx.beginPath();
-          ctx.arc(posX, posY, 4, 0, Math.PI * 2);
-          ctx.fillStyle = '#3b82f6';
-          ctx.fill();
-        });
-      }
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [isPlaying, currentMode]);
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const whatsappHref = whatsappNumber
+    ? `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
+        `Hello Susthir Digital, I watched your reel and I want to discuss a project like ${currentChannel.title}.`
+      )}`
+    : `https://wa.me/?text=${encodeURIComponent(
+        `Hello Susthir Digital, I watched your reel and I want to discuss a project like ${currentChannel.title}.`
+      )}`;
 
   return (
     <Section
@@ -222,191 +211,168 @@ export default function MotionReel() {
       {/* Background Ambient Glow */}
       <div
         aria-hidden="true"
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-900/20 via-indigo-900/15 to-violet-900/20 blur-3xl pointer-events-none rounded-full"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-900/25 via-indigo-900/20 to-emerald-900/15 blur-3xl pointer-events-none rounded-full"
       />
 
       <Container size="default">
-        <div className="space-y-10 sm:space-y-14 relative z-10">
+        <div className="space-y-10 sm:space-y-12 relative z-10">
           
           {/* Section Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-800/80">
             <div className="max-w-2xl space-y-3">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                <Eyebrow variant="accent" className="text-blue-400">
-                  MOTION &amp; MODERN ENGINEERING
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <Eyebrow variant="accent" className="text-emerald-400 font-semibold tracking-wider">
+                  FREELANCE CLIENT REEL &amp; DELIVERABLES
                 </Eyebrow>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-[1.08] text-balance">
-                Digital experiences with depth, motion, and speed.
+                Real websites that turn visitors into paying clients.
               </h2>
 
               <p className="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-xl text-balance">
-                Websites shouldn&apos;t feel like frozen brochures. We craft fluid 60fps micro-interactions, 3D spatial depth, and responsive layouts that invite real engagement.
+                Watch how we engineer Shopify stores, Next.js web apps, and business websites for maximum speed, commercial conversion, and search ranking.
               </p>
             </div>
 
-            {/* Mode Selector Tabs */}
-            <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-[var(--radius-subtle)] bg-neutral-900/90 border border-neutral-800">
-              {PRESET_MODES.map((mode) => {
-                const Icon = mode.icon;
-                const isActive = currentMode === mode.id;
+            {/* Quick Channel Selector Tabs */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-[var(--radius-subtle)] bg-neutral-900/90 border border-neutral-800">
+              {SHOWREEL_CHANNELS.map((ch, idx) => {
+                const isActive = currentChannelIndex === idx;
                 return (
                   <button
-                    key={mode.id}
+                    key={ch.id}
                     type="button"
-                    onClick={() => setCurrentMode(mode.id)}
-                    className={`inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-mono transition-all rounded-[var(--radius-subtle)] ${
+                    onClick={() => {
+                      setCurrentChannelIndex(idx);
+                      setProgress(0);
+                    }}
+                    className={`px-3 py-1.5 text-xs font-mono transition-all rounded-[var(--radius-subtle)] ${
                       isActive
                         ? 'bg-blue-600 text-white font-semibold shadow-xs'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-800'
                     }`}
                   >
-                    <Icon className="h-3.5 w-3.5" />
-                    <span>{mode.label}</span>
+                    <span>{ch.label}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Cinematic Motion Stage (16:9 Aspect Ratio) */}
+          {/* Cinematic Interactive Freelance Stage */}
           <div
             ref={stageRef}
             className="group relative w-full aspect-video sm:aspect-[21/9] lg:aspect-[16/8] rounded-[var(--radius-default)] bg-neutral-900 border border-neutral-800 overflow-hidden shadow-2xl"
           >
-            {/* 3D Motion Render Image as Living Backdrop */}
+            {/* Project Image as Living Visual Backdrop */}
             <div className="absolute inset-0">
               <Image
-                src="/assets/home/susthir_motion_showcase.jpg"
-                alt="Susthir Digital 3D Interface and Motion Architecture"
+                src={currentChannel.image}
+                alt={`${currentChannel.title} — client web deliverable`}
                 fill
                 className={`object-cover transition-transform duration-700 ${
-                  isPlaying ? 'scale-102 group-hover:scale-105' : 'scale-100'
+                  isPlaying ? 'scale-102' : 'scale-100'
                 }`}
                 priority={false}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/60" />
+              {/* Cinematic Dark Gradient for High-Contrast Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-neutral-950/40" />
             </div>
 
-            {/* Dynamic WebGL Canvas Overlay for Real-Time Vector Wave */}
-            <canvas
-              ref={canvasRef}
-              className="absolute inset-0 pointer-events-none z-10 w-full h-full"
-            />
-
-            {/* Scanline CRT Texture */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40 z-10"
-            />
-
-            {/* Top Telemetry Bar */}
+            {/* Top Telemetry & Status Bar */}
             <div className="absolute top-0 inset-x-0 p-4 sm:p-6 flex items-center justify-between z-20 text-xs font-mono">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-neutral-700/80 text-white">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-700/80 text-white">
                   <span className={`h-2 w-2 rounded-full ${isPlaying ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
-                  <span className="font-semibold uppercase tracking-wider">
-                    {isPlaying ? 'ACTIVE REEL' : 'PAUSED'}
+                  <span className="font-semibold uppercase tracking-wider text-[11px]">
+                    {isPlaying ? 'ACTIVE SHOWREEL' : 'PAUSED'}
                   </span>
                 </span>
 
-                <span className="hidden sm:inline-block px-2.5 py-1 rounded bg-black/60 backdrop-blur-md border border-neutral-800 text-neutral-300">
-                  FRAME: 3840 × 2160 // 60 FPS
+                <span className="px-2.5 py-1 rounded bg-blue-950/90 backdrop-blur-md border border-blue-700/80 text-blue-300 font-semibold text-[10px]">
+                  {currentChannel.badge}
+                </span>
+
+                <span className="hidden md:inline-block px-2.5 py-1 rounded bg-black/60 backdrop-blur-md border border-neutral-800 text-neutral-300 text-[10px]">
+                  {currentChannel.timeline}
                 </span>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-1 rounded bg-blue-950/80 border border-blue-800/80 text-blue-300 text-[11px] font-semibold">
-                  ENGINEERED IN ODISHA
-                </span>
+              {/* Device Viewport Toggle (Desktop vs Mobile Preview) */}
+              <div className="flex items-center gap-1 bg-black/70 p-1 rounded border border-neutral-800 text-[10px]">
+                <button
+                  type="button"
+                  onClick={() => setActiveDevice('desktop')}
+                  className={`p-1.5 rounded transition-all ${
+                    activeDevice === 'desktop' ? 'bg-blue-600 text-white' : 'text-neutral-400 hover:text-white'
+                  }`}
+                  title="Desktop View"
+                >
+                  <Laptop className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveDevice('mobile')}
+                  className={`p-1.5 rounded transition-all ${
+                    activeDevice === 'mobile' ? 'bg-blue-600 text-white' : 'text-neutral-400 hover:text-white'
+                  }`}
+                  title="Mobile View"
+                >
+                  <Smartphone className="h-3.5 w-3.5" />
+                </button>
               </div>
             </div>
 
-            {/* Interactive Hotspot Callouts (Mode: Interactive) */}
-            {currentMode === 'interactive' && (
-              <div className="absolute inset-0 z-20 pointer-events-none">
-                {HOTSPOTS.map((spot) => {
-                  const isSelected = activeHotspot.id === spot.id;
-                  return (
-                    <div
-                      key={spot.id}
-                      style={{ left: spot.x, top: spot.y }}
-                      className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setActiveHotspot(spot)}
-                        className={`group/hotspot relative flex items-center justify-center h-8 w-8 rounded-full border transition-all ${
-                          isSelected
-                            ? 'bg-blue-600 border-white scale-125 shadow-lg shadow-blue-500/50'
-                            : 'bg-black/80 border-neutral-600 hover:border-blue-400 hover:scale-110'
-                        }`}
-                        aria-label={`Inspect ${spot.label}`}
-                      >
-                        <span className="h-2 w-2 rounded-full bg-white" />
-                      </button>
-
-                      {isSelected && (
-                        <div className="absolute left-1/2 bottom-full mb-3 -translate-x-1/2 w-64 p-3.5 rounded-[var(--radius-default)] bg-black/90 backdrop-blur-xl border border-blue-500/60 shadow-xl space-y-1 text-left animate-fadeIn">
-                          <div className="flex items-center justify-between text-[10px] font-mono text-blue-400">
-                            <span>FEATURE NODE</span>
-                            <span>{spot.tech}</span>
-                          </div>
-                          <h4 className="text-xs font-semibold text-white">{spot.label}</h4>
-                          <p className="text-[11px] text-neutral-300 leading-normal">{spot.desc}</p>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* Performance Telemetry Overlay (Mode: Metrics) */}
-            {currentMode === 'metrics' && (
-              <div className="absolute inset-0 z-20 p-6 flex flex-col justify-center items-center bg-black/60 backdrop-blur-xs">
-                <div className="w-full max-w-xl p-5 sm:p-6 rounded-[var(--radius-default)] bg-neutral-900/90 border border-neutral-700/80 shadow-2xl space-y-5">
-                  <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
-                    <div className="flex items-center gap-2">
-                      <Activity className="h-4 w-4 text-emerald-400" />
-                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-white">
-                        Live System Benchmark
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
-                      OPTIMIZED 100/100
+            {/* Central Client Overlay Card */}
+            <div className="absolute inset-x-4 sm:inset-x-8 top-16 sm:top-20 bottom-24 z-20 flex flex-col justify-center pointer-events-none">
+              <div className="max-w-xl p-4 sm:p-6 rounded-[var(--radius-default)] bg-black/80 backdrop-blur-md border border-neutral-700/80 shadow-2xl pointer-events-auto space-y-4">
+                
+                {/* Title & Speed Score */}
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                      {currentChannel.title}
+                    </h3>
+                    <p className="text-xs text-neutral-300 mt-1 leading-relaxed">
+                      {currentChannel.subtitle}
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <span className="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/60 text-emerald-400 font-mono font-bold text-xs">
+                      ⚡ {currentChannel.speedScore}
                     </span>
+                    <span className="text-[10px] text-neutral-400 block font-mono mt-0.5">Google Score</span>
                   </div>
-
-                  <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className="p-3 rounded bg-neutral-950/80 border border-neutral-800 space-y-1">
-                      <span className="text-[10px] font-mono text-neutral-400 block uppercase">Framerate</span>
-                      <span className="text-2xl font-bold font-mono text-white block">60.0</span>
-                      <span className="text-[10px] font-mono text-emerald-400 block">Steady V-Sync</span>
-                    </div>
-                    <div className="p-3 rounded bg-neutral-950/80 border border-neutral-800 space-y-1">
-                      <span className="text-[10px] font-mono text-neutral-400 block uppercase">Input Latency</span>
-                      <span className="text-2xl font-bold font-mono text-blue-400 block">&lt; 38ms</span>
-                      <span className="text-[10px] font-mono text-neutral-400 block">Instant UI</span>
-                    </div>
-                    <div className="p-3 rounded bg-neutral-950/80 border border-neutral-800 space-y-1">
-                      <span className="text-[10px] font-mono text-neutral-400 block uppercase">Layout Shift</span>
-                      <span className="text-2xl font-bold font-mono text-emerald-400 block">0.00</span>
-                      <span className="text-[10px] font-mono text-neutral-400 block">CLS Zero</span>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-neutral-400 leading-relaxed text-center font-mono">
-                    All client projects deployed with clean markup, modular bundles, and optimized asset pipelines.
-                  </p>
                 </div>
-              </div>
-            )}
 
-            {/* Bottom Playback & Control Strip */}
-            <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-20 space-y-3">
+                {/* Key Deliverable Features */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-neutral-300 pt-1">
+                  {currentChannel.features.map((feat, i) => (
+                    <div key={i} className="flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                      <span className="truncate">{feat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Client Quote & Results Pill */}
+                <div className="pt-2 border-t border-neutral-800 flex items-center justify-between gap-3 text-xs">
+                  <p className="text-[11px] text-neutral-400 italic truncate max-w-xs">
+                    {currentChannel.clientQuote}
+                  </p>
+                  <div className="shrink-0 flex items-center gap-1.5 font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-800">
+                    <TrendingUp className="h-3.5 w-3.5" />
+                    <span>{currentChannel.metric} {currentChannel.metricLabel}</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Bottom Playback & Freelance Action Controls */}
+            <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-black via-black/90 to-transparent z-20 space-y-3">
               
               {/* Scrubbing Progress Bar */}
               <div
@@ -422,36 +388,36 @@ export default function MotionReel() {
                 }}
               >
                 <div
-                  className="h-full bg-gradient-to-r from-blue-500 via-indigo-400 to-cyan-400 transition-all duration-100 will-change-transform"
+                  className="h-full bg-gradient-to-r from-blue-500 via-indigo-400 to-emerald-400 transition-all duration-100 will-change-transform"
                   style={{ width: `${progress}%` }}
                 />
               </div>
 
               {/* Lower Controls Row */}
-              <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-white text-neutral-950 hover:bg-neutral-200 transition-colors shadow-md"
-                    aria-label={isPlaying ? 'Pause motion preview' : 'Play motion preview'}
+                    className="inline-flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white text-neutral-950 hover:bg-neutral-200 transition-colors shadow-md"
+                    aria-label={isPlaying ? 'Pause showreel' : 'Play showreel'}
                   >
                     {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
                   </button>
 
                   <div className="text-xs font-mono text-neutral-300">
-                    <span>{String(Math.floor((progress / 100) * 16)).padStart(2, '0')}:</span>
-                    <span>{String(Math.floor(((progress / 100) * 60) % 60)).padStart(2, '0')}</span>
-                    <span className="text-neutral-500"> / 02:40</span>
+                    <span>Channel {currentChannelIndex + 1} of {SHOWREEL_CHANNELS.length}</span>
+                    <span className="text-neutral-500"> · </span>
+                    <span className="text-neutral-400">{currentChannel.label}</span>
                   </div>
 
                   {/* Audio / Waveform Visualizer Bars */}
                   <div
                     ref={waveformRef}
                     className="hidden sm:flex items-center gap-0.5 h-4 px-2 py-0.5 rounded bg-neutral-900/80 border border-neutral-800"
-                    title="Audio Spectrum Simulation"
+                    title="Live Audio Spectrum"
                   >
-                    {[...Array(12)].map((_, i) => (
+                    {[...Array(10)].map((_, i) => (
                       <span
                         key={i}
                         className="wave-bar w-0.5 h-full bg-blue-400 rounded-full origin-bottom"
@@ -461,15 +427,25 @@ export default function MotionReel() {
                   </div>
                 </div>
 
-                {/* Right Action & Inquire Direct */}
-                <div className="flex items-center gap-3">
+                {/* Right Conversion Actions */}
+                <div className="flex items-center gap-2">
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors"
+                  >
+                    <MessageSquare className="h-3.5 w-3.5" />
+                    <span>WhatsApp Me</span>
+                  </a>
+
                   <Button
                     href="/contact"
                     variant="primary"
                     size="sm"
                     className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium border-0"
                   >
-                    <span>Build Your Project</span>
+                    <span>Hire For Similar Project</span>
                     <ArrowUpRight className="h-3.5 w-3.5 ml-1" />
                   </Button>
                 </div>
@@ -479,38 +455,38 @@ export default function MotionReel() {
 
           </div>
 
-          {/* 3 Value Pillars under the Showcase */}
+          {/* 3 Why Freelance With Susthir Digital Value Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-            <div className="p-5 rounded-[var(--radius-default)] bg-neutral-900/60 border border-neutral-800/80 space-y-2">
+            <div className="p-5 rounded-[var(--radius-default)] bg-neutral-900/70 border border-neutral-800/80 space-y-2">
               <div className="flex items-center gap-2 text-blue-400 font-mono text-xs uppercase tracking-wider font-semibold">
                 <Sparkles className="h-3.5 w-3.5" />
-                <span>Modern Spatial Craft</span>
+                <span>Zero Agency Markup</span>
               </div>
-              <h3 className="text-lg font-semibold text-white">3D Interfaces &amp; Depth</h3>
+              <h3 className="text-lg font-semibold text-white">Save 60% vs Agency Rates</h3>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                Elevate your brand beyond standard boilerplate templates with clean 3D perspective layers, glassmorphism, and responsive physics.
+                You pay solely for senior engineering craft. No fancy office rents, no non-coding account managers, and no inflated retainers.
               </p>
             </div>
 
-            <div className="p-5 rounded-[var(--radius-default)] bg-neutral-900/60 border border-neutral-800/80 space-y-2">
-              <div className="flex items-center gap-2 text-indigo-400 font-mono text-xs uppercase tracking-wider font-semibold">
-                <Zap className="h-3.5 w-3.5" />
-                <span>Zero Lag Architecture</span>
-              </div>
-              <h3 className="text-lg font-semibold text-white">Butter-Smooth GSAP Timelines</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                Animations synced with the browser paint cycle using GSAP ScrollTrigger and RequestAnimationFrame for flawless 60fps scrolling.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-[var(--radius-default)] bg-neutral-900/60 border border-neutral-800/80 space-y-2">
+            <div className="p-5 rounded-[var(--radius-default)] bg-neutral-900/70 border border-neutral-800/80 space-y-2">
               <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-semibold">
-                <CheckCircle2 className="h-3.5 w-3.5" />
-                <span>Direct Commercial Focus</span>
+                <Zap className="h-3.5 w-3.5" />
+                <span>100/100 Core Web Vitals</span>
               </div>
-              <h3 className="text-lg font-semibold text-white">Engineered for Conversion</h3>
+              <h3 className="text-lg font-semibold text-white">Sub-Second Speed That Ranks</h3>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                Aesthetics that drive real commercial inquiries. Clear user hierarchy, intuitive navigation paths, and frictionless mobile checkouts.
+                Google rewards speed. Every website we build passes Core Web Vitals with flying colors, cutting bounce rates and lifting conversions.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-[var(--radius-default)] bg-neutral-900/70 border border-neutral-800/80 space-y-2">
+              <div className="flex items-center gap-2 text-indigo-400 font-mono text-xs uppercase tracking-wider font-semibold">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                <span>Zero-Risk Guarantee</span>
+              </div>
+              <h3 className="text-lg font-semibold text-white">Milestones &amp; 30-Day Warranty</h3>
+              <p className="text-xs text-neutral-400 leading-relaxed">
+                Pay in clear stages as you inspect real working preview links. Includes 30 days of free bug-fixing and post-launch technical support.
               </p>
             </div>
           </div>

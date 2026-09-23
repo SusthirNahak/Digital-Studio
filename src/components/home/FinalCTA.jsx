@@ -62,22 +62,22 @@ export default function FinalCTA() {
         >
           {/* Eyebrow */}
           <div className="flex justify-center">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[var(--radius-subtle)] bg-neutral-900 border border-neutral-800 text-neutral-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <Eyebrow variant="default" className="text-neutral-300 text-[11px]">
-                Have a Project in Mind?
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-[var(--radius-subtle)] bg-blue-950/80 border border-blue-800/80 text-blue-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+              <Eyebrow variant="default" className="text-blue-300 text-[11px] font-semibold tracking-wider">
+                READY TO HIRE FOR YOUR PROJECT?
               </Eyebrow>
             </span>
           </div>
 
           {/* Large Editorial Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-[1.1] text-balance">
-            Let&apos;s build something that moves your business forward.
+            Let&apos;s build a website that wins you real clients and revenue.
           </h2>
 
           {/* Supporting Text */}
           <p className="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-xl mx-auto text-balance">
-            Tell us what you&apos;re building, what you need, and where you want to go. We&apos;ll review the project and discuss the right approach.
+            Whether you need a high-converting Shopify store, a custom Next.js web application, or a complete website redesign—we deliver in 2–3 weeks with fixed milestone pricing.
           </p>
 
           {/* Action Row */}
@@ -86,9 +86,9 @@ export default function FinalCTA() {
               href="/contact"
               variant="primary"
               size="lg"
-              className="bg-white text-neutral-950 hover:bg-neutral-100 transition-transform group"
+              className="bg-white text-neutral-950 hover:bg-neutral-100 transition-transform group shadow-md"
             >
-              <span>Start a Project</span>
+              <span>Get Your Free Project Estimate</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
 
@@ -96,19 +96,29 @@ export default function FinalCTA() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-[var(--radius-default)] border border-neutral-800 hover:border-neutral-700 bg-neutral-900 text-sm font-medium text-neutral-300 hover:text-white transition-all cursor-pointer select-none group"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-[var(--radius-default)] border border-emerald-800/80 hover:border-emerald-600 bg-emerald-950/40 text-sm font-medium text-emerald-300 hover:text-white transition-all cursor-pointer select-none group"
               aria-label="Chat with us on WhatsApp"
             >
               <MessageSquare className="h-4 w-4 text-emerald-400" />
-              <span>WhatsApp Us</span>
+              <span>Direct WhatsApp Chat</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
           {/* Reassurance note */}
-          <div className="pt-4 border-t border-neutral-900 flex items-center justify-center gap-2 text-xs text-neutral-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            <span>Tell us what you&apos;re building and we&apos;ll discuss the right approach.</span>
+          <div className="pt-4 border-t border-neutral-900 flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-400">
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              <span>Responses within 2–4 hours</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+              <span>No agency markup or middleman fees</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
+              <span>Free 30-day post-launch warranty</span>
+            </div>
           </div>
 
         </div>

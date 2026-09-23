@@ -111,16 +111,21 @@ export default function SelectedWork() {
         {/* Section Heading Block */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-20">
           <div className="max-w-2xl space-y-4">
-            <Eyebrow variant="accent">Selected Work</Eyebrow>
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+              <Eyebrow variant="accent" className="text-blue-600 font-semibold tracking-wider">
+                PROVEN FREELANCE CLIENT DELIVERIES
+              </Eyebrow>
+            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-900 leading-[1.1] text-balance">
-              Featured Client Platforms.
+              Websites that drive real commercial inquiries and sales.
             </h2>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
-              Selected production websites and digital platforms engineered with custom themes, responsive layouts, and clean architecture.
+              Every project is engineered directly with the business owner to solve real commercial goals—from high-converting Shopify stores to sub-second Next.js web applications.
             </p>
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0 flex items-center gap-3">
             <Button href="/work" variant="secondary" size="md">
               <span>View All 11 Projects</span>
               <ArrowUpRight className="h-4 w-4" />
