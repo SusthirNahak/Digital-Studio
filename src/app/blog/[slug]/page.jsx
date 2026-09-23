@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { getAllArticles, getArticleBySlug, getRelatedArticles } from '@/data/blog';
 import ArticleView from '@/components/blog/ArticleView';
 
@@ -48,8 +50,14 @@ export default async function BlogPostPage({ params }) {
   const relatedArticles = getRelatedArticles(slug, 2);
 
   return (
-    <main>
-      <ArticleView article={article} relatedArticles={relatedArticles} />
-    </main>
+    <div className="flex min-h-screen flex-col bg-[var(--color-bg)]">
+      <Header />
+
+      <main className="flex-1">
+        <ArticleView article={article} relatedArticles={relatedArticles} />
+      </main>
+
+      <Footer />
+    </div>
   );
 }

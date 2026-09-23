@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Eyebrow from '@/components/ui/Eyebrow';
@@ -199,44 +200,23 @@ export default function BlogIndex() {
                     </div>
                   </div>
 
-                  {/* Right Column: Architectural Wireframe / Stack Diagram */}
-                  <div className="lg:col-span-5 select-none pointer-events-none">
-                    <div className="rounded-[var(--radius-subtle)] border border-neutral-200 bg-neutral-50 overflow-hidden shadow-xs p-5 space-y-4">
-                      <div className="flex items-center justify-between pb-3 border-b border-neutral-200 text-xs font-mono">
-                        <span className="text-neutral-500 font-semibold uppercase">Stack Decision Matrix</span>
-                        <span className="text-[10px] text-neutral-400">Spec v2.4</span>
-                      </div>
-
-                      <div className="space-y-2">
-                        <div className="p-2.5 bg-white border border-neutral-200 rounded-xs flex items-center justify-between">
-                          <span className="text-xs font-mono font-medium text-neutral-900">WordPress + ACF</span>
-                          <span className="text-[10px] font-mono text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
-                            Editorial CMS
-                          </span>
-                        </div>
-                        <div className="p-2.5 bg-white border border-neutral-200 rounded-xs flex items-center justify-between">
-                          <span className="text-xs font-mono font-medium text-neutral-900">Shopify 2.0</span>
-                          <span className="text-[10px] font-mono text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
-                            Commerce Engine
-                          </span>
-                        </div>
-                        <div className="p-2.5 bg-white border border-neutral-200 rounded-xs flex items-center justify-between">
-                          <span className="text-xs font-mono font-medium text-neutral-900">Webflow</span>
-                          <span className="text-[10px] font-mono text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
-                            Marketing Velocity
-                          </span>
-                        </div>
-                        <div className="p-2.5 bg-neutral-950 text-white border border-neutral-800 rounded-xs flex items-center justify-between">
-                          <span className="text-xs font-mono font-semibold text-white">Next.js + React</span>
-                          <span className="text-[10px] font-mono text-emerald-400 bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
-                            Dynamic Apps &amp; Portals
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="pt-1 flex items-center justify-between text-[10px] font-mono text-neutral-400 border-t border-neutral-200">
-                        <span>Evaluation Criteria</span>
-                        <span>Complexity / Longevity</span>
+                  {/* Right Column: Featured Editorial Image */}
+                  <div className="lg:col-span-5">
+                    <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-subtle)] border border-neutral-200/90 bg-neutral-100 shadow-xs">
+                      {featuredArticle.image && (
+                        <Image
+                          src={featuredArticle.image}
+                          alt={featuredArticle.imageAlt || featuredArticle.title}
+                          fill
+                          priority
+                          sizes="(max-width: 1024px) 100vw, 42vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white/90 bg-neutral-950/75 backdrop-blur-md px-3 py-1.5 rounded-[var(--radius-subtle)] border border-white/10 pointer-events-none">
+                        <span className="font-medium truncate">Stack Decision Architecture</span>
+                        <span className="text-white/60 ml-2 shrink-0">Spec v2.4</span>
                       </div>
                     </div>
                   </div>
@@ -280,29 +260,44 @@ export default function BlogIndex() {
                     aria-label={`Read article: ${article.title}`}
                   />
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
                     
                     {/* Index & Category */}
-                    <div className="lg:col-span-3 flex lg:flex-col items-center lg:items-start justify-between lg:justify-start gap-3">
-                      <div className="flex items-center gap-3">
+                    <div className="md:col-span-3 lg:col-span-2 flex md:flex-col items-center md:items-start justify-between md:justify-start gap-2.5">
+                      <div className="flex items-center gap-2.5">
                         <span className="text-xs font-mono font-bold text-neutral-400 group-hover:text-[var(--color-accent)] transition-colors">
                           {String(idx + 1).padStart(2, '0')}
                         </span>
                         <span className="text-neutral-300 font-mono">/</span>
-                        <span className="px-2 py-0.5 rounded-[var(--radius-subtle)] bg-neutral-100 border border-neutral-200 text-[11px] font-mono text-neutral-700 font-medium tracking-wide uppercase">
+                        <span className="px-2 py-0.5 rounded-[var(--radius-subtle)] bg-neutral-100 border border-neutral-200 text-[10px] font-mono text-neutral-700 font-medium tracking-wide uppercase">
                           {article.category}
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs font-mono text-neutral-400 lg:pt-2">
+                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 md:pt-2">
                         <span>{article.date}</span>
                         <span>·</span>
                         <span>{article.readTime}</span>
                       </div>
                     </div>
 
+                    {/* Editorial Preview Thumbnail */}
+                    <div className="md:col-span-3 lg:col-span-3">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-subtle)] border border-neutral-200/90 bg-neutral-100 shadow-2xs">
+                        {article.image && (
+                          <Image
+                            src={article.image}
+                            alt={article.imageAlt || article.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 25vw, 240px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        )}
+                      </div>
+                    </div>
+
                     {/* Title & Short Excerpt */}
-                    <div className="lg:col-span-8 space-y-2">
+                    <div className="md:col-span-5 lg:col-span-6 space-y-2">
                       <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-950 group-hover:text-[var(--color-accent)] group-hover:translate-x-1 transition-all duration-200 leading-snug">
                         {article.title}
                       </h3>
@@ -322,7 +317,7 @@ export default function BlogIndex() {
                     </div>
 
                     {/* Right Arrow Icon */}
-                    <div className="lg:col-span-1 hidden lg:flex justify-end pt-1">
+                    <div className="md:col-span-1 hidden md:flex justify-end pt-1">
                       <span className="h-8 w-8 rounded-full border border-neutral-200 group-hover:border-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white text-neutral-500 flex items-center justify-center transition-all duration-200">
                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </span>

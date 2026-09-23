@@ -1,3 +1,5 @@
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import BlogIndex from '@/components/blog/BlogIndex';
 import FinalCTA from '@/components/home/FinalCTA';
 
@@ -13,9 +15,15 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <main>
-      <BlogIndex />
-      <FinalCTA />
-    </main>
+    <div className="flex min-h-screen flex-col bg-[var(--color-bg)]">
+      <Header />
+
+      <main className="flex-1">
+        <BlogIndex />
+        <FinalCTA />
+      </main>
+
+      <Footer />
+    </div>
   );
 }

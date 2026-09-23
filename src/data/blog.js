@@ -18,6 +18,8 @@ export const ARTICLES = [
     readTime: '7 min read',
     featured: true,
     tags: ['Architecture', 'WordPress', 'Shopify', 'Webflow', 'Next.js'],
+    image: '/assets/blog/featured-stack.jpg',
+    imageAlt: 'Modern minimalist workspace with laptop displaying web development architecture on a clean desk',
     content: [
       {
         type: 'paragraph',
@@ -116,6 +118,8 @@ export const ARTICLES = [
     readTime: '6 min read',
     featured: false,
     tags: ['WordPress', 'Shopify', 'Comparison', 'Ecommerce', 'CMS'],
+    image: '/assets/blog/wordpress-shopify.jpg',
+    imageAlt: 'Laptop on an office desk displaying ecommerce analytics and digital store performance metrics',
     content: [
       {
         type: 'paragraph',
@@ -173,6 +177,8 @@ export const ARTICLES = [
     readTime: '5 min read',
     featured: false,
     tags: ['Design Systems', 'Typography', 'UI/UX', 'Performance', 'Aesthetics'],
+    image: '/assets/blog/premium-web-design.jpg',
+    imageAlt: 'Desktop workstation in a minimalist creative studio showing structured web typography and responsive interface layouts',
     content: [
       {
         type: 'paragraph',
@@ -234,6 +240,8 @@ export const ARTICLES = [
     readTime: '6 min read',
     featured: false,
     tags: ['Next.js', 'React', 'Fullstack', 'API Architecture', 'CMS'],
+    image: '/assets/blog/nextjs.jpg',
+    imageAlt: 'Software engineer coding with a modern dark-mode code editor on a laptop with focused task lighting',
     content: [
       {
         type: 'paragraph',
@@ -284,6 +292,8 @@ export const ARTICLES = [
     readTime: '6 min read',
     featured: false,
     tags: ['Planning', 'Architecture', 'Sitemap', 'Project Management', 'Scoping'],
+    image: '/assets/blog/website-planning.jpg',
+    imageAlt: 'Desk arranged with responsive website wireframe sketches, architecture notes, and open laptop',
     content: [
       {
         type: 'paragraph',
@@ -341,6 +351,8 @@ export const ARTICLES = [
     readTime: '5 min read',
     featured: false,
     tags: ['WordPress', 'ACF Pro', 'Content Modeling', 'PHP', 'Backend'],
+    image: '/assets/blog/wordpress-acf.jpg',
+    imageAlt: 'Developer typing and configuring structured CMS content models on a laptop keyboard',
     content: [
       {
         type: 'paragraph',
@@ -390,6 +402,8 @@ export const ARTICLES = [
     readTime: '6 min read',
     featured: false,
     tags: ['Shopify', 'Liquid', 'Ecommerce', 'Metafields', 'Storefront'],
+    image: '/assets/blog/shopify-storefront.jpg',
+    imageAlt: 'Modern laptop screen presenting an ecommerce storefront catalog with refined product cards',
     content: [
       {
         type: 'paragraph',

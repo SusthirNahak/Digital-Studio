@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Eyebrow from '@/components/ui/Eyebrow';
@@ -93,6 +94,20 @@ export default function ArticleView({ article, relatedArticles = [] }) {
       <Section spacing="default" className="py-12 sm:py-16">
         <Container size="default">
           <div className="max-w-3xl mx-auto">
+            {/* Editorial Lead Hero Visual */}
+            {article.image && (
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-default)] border border-neutral-200/90 bg-neutral-100 shadow-xs mb-10 sm:mb-12">
+                <Image
+                  src={article.image}
+                  alt={article.imageAlt || article.title}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
+                />
+              </div>
+            )}
+
             <div className="space-y-6">
               {article.content.map((block, idx) => {
                 if (block.type === 'heading2') {
@@ -196,6 +211,18 @@ export default function ArticleView({ article, relatedArticles = [] }) {
                     href={`/blog/${rel.slug}`}
                     className="group block p-5 rounded-[var(--radius-default)] bg-white border border-neutral-200 hover:border-neutral-400 shadow-2xs hover:shadow-xs transition-all space-y-3"
                   >
+                    {rel.image && (
+                      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-subtle)] border border-neutral-200/80 bg-neutral-100">
+                        <Image
+                          src={rel.image}
+                          alt={rel.imageAlt || rel.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, 360px"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+
                     <div className="flex items-center justify-between text-xs font-mono text-neutral-400">
                       <span className="text-neutral-700 uppercase">{rel.category}</span>
                       <span>{rel.readTime}</span>

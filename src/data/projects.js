@@ -24,7 +24,7 @@ export const PROJECTS = [
       'Website development for Viva Kraft, an industrial packaging solutions and kraft paper manufacturer located in Odisha, India, built on WordPress.',
     role: 'Web Design & Development',
     services: ['Website Development', 'WordPress Architecture', 'Responsive Layout'],
-    featured: false,
+    featured: true,
     coverImage: '/assets/projects/viva-kraft/cover.jpg',
     gallery: [],
     confidential: false,
@@ -46,7 +46,7 @@ export const PROJECTS = [
       'Website development for Hillstone Dental Lab, a specialized dental laboratory based in Odisha, India, delivering prosthetic and digital dentistry solutions, built on WordPress.',
     role: 'Web Design & Development',
     services: ['Website Development', 'WordPress Architecture', 'Content Structuring'],
-    featured: false,
+    featured: true,
     coverImage: '/assets/projects/hillstone-dental-lab/cover.jpg',
     gallery: [],
     confidential: false,
@@ -68,7 +68,7 @@ export const PROJECTS = [
       'Web development for Pratham Dental Care, a multi-speciality dental healthcare clinic situated in Odisha, India, built on WordPress.',
     role: 'Web Design & Development',
     services: ['Website Development', 'WordPress Architecture', 'Service Pages'],
-    featured: false,
+    featured: true,
     coverImage: '/assets/projects/pratham-dental-care/cover.jpg',
     gallery: [],
     confidential: false,
@@ -134,7 +134,7 @@ export const PROJECTS = [
       'Website development for Neoplan Foods, a food distribution and FMCG enterprise based in the United Arab Emirates, built on WordPress.',
     role: 'Web Design & Development',
     services: ['Website Development', 'Product Catalog', 'Corporate Architecture'],
-    featured: true,
+    featured: false,
     coverImage: '/assets/projects/neoplan-foods/cover.jpg',
     gallery: [],
     confidential: false,
@@ -178,7 +178,7 @@ export const PROJECTS = [
       'Web application engineering for The Smart Vision, built with Next.js and deployed on Vercel. Location details to be verified.',
     role: 'Frontend Engineering & Application Architecture',
     services: ['Next.js Development', 'Component Architecture', 'Performance Optimization'],
-    featured: true,
+    featured: false,
     coverImage: '/assets/projects/the-smart-vision/cover.jpg',
     gallery: [],
     confidential: false,
@@ -200,7 +200,7 @@ export const PROJECTS = [
       'Storefront web development for Natural Elixirs — Supplements, an herbal and dietary supplement brand based in Malaysia, built with Next.js.',
     role: 'Frontend Engineering & Storefront Development',
     services: ['Next.js Development', 'Product Catalog', 'Storefront Architecture'],
-    featured: true,
+    featured: false,
     coverImage: '/assets/projects/natural-elixirs-supplements/cover.jpg',
     gallery: [],
     confidential: false,
@@ -253,10 +253,10 @@ export const PROJECTS = [
 ];
 
 const FEATURED_SLUG_ORDER = [
-  'natural-elixirs-supplements',
-  'neoplan-foods',
+  'viva-kraft',
+  'hillstone-dental-lab',
+  'pratham-dental-care',
   'pflege-bergstrasse',
-  'the-smart-vision',
 ];
 
 export const FEATURED_PROJECTS = FEATURED_SLUG_ORDER.map((slug) =>
