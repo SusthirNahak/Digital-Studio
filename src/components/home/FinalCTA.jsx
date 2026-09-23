@@ -45,9 +45,9 @@ export default function FinalCTA() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const whatsappHref = whatsappNumber
     ? `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-        "Hello Digital Studio, I'm interested in discussing a project."
+        "Hello Susthir Digital, I'm interested in discussing a project."
       )}`
-    : 'https://wa.me/?text=Hello%20Digital%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project.';
+    : 'https://wa.me/?text=Hello%20Susthir%20Digital%2C%20I%20am%20interested%20in%20discussing%20a%20project.';
 
   return (
     <Section

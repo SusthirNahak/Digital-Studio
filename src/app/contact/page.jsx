@@ -9,9 +9,9 @@ import ContactDetails, { DirectChannelsCard } from '@/components/contact/Contact
 import ContactProcess from '@/components/contact/ContactProcess';
 
 export const metadata = {
-  title: 'Start a Project — Digital Studio',
+  title: 'Start a Project — Susthir Digital',
   description:
-    'Tell Digital Studio about your website, ecommerce, or web application project.',
+    'Tell Susthir Digital about your website, ecommerce, or web application project.',
 };
 
 export default function ContactPage() {

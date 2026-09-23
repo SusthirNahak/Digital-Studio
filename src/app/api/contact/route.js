@@ -96,7 +96,7 @@ ${description}
         </div>
 
         <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e5e5; font-size: 12px; color: #737373; text-align: center;">
-          Sent to <strong>${RECIPIENT_EMAIL}</strong> via Digital Studio Website Contact Form.
+          Sent to <strong>${RECIPIENT_EMAIL}</strong> via Susthir Digital Website Contact Form.
         </div>
       </div>
     `;
@@ -121,7 +121,7 @@ ${description}
         });
 
         await transporter.sendMail({
-          from: process.env.SMTP_FROM || `"Digital Studio Leads" <${smtpUser}>`,
+          from: process.env.SMTP_FROM || `"Susthir Digital Leads" <${smtpUser}>`,
           to: RECIPIENT_EMAIL,
           replyTo: email,
           subject: `[New Project Brief] ${service} - ${name}${company ? ` (${company})` : ''}`,

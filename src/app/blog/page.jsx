@@ -4,10 +4,10 @@ import BlogIndex from '@/components/blog/BlogIndex';
 import FinalCTA from '@/components/home/FinalCTA';
 
 export const metadata = {
-  title: 'Journal — Digital Studio',
+  title: 'Journal — Susthir Digital',
   description: 'Practical notes on websites, ecommerce, WordPress, Shopify, React and Next.js.',
   openGraph: {
-    title: 'Journal — Digital Studio',
+    title: 'Journal — Susthir Digital',
     description: 'Practical notes on websites, ecommerce, WordPress, Shopify, React and Next.js.',
     type: 'website',
   },

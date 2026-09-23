@@ -114,7 +114,7 @@ export default function ProjectFilm({ videoSrc = '/assets/work/digital-studio-re
                 playsInline
                 onError={() => setVideoError(true)}
                 className="w-full h-full object-cover"
-                aria-label="Digital Studio product presentation reel"
+                aria-label="Susthir Digital product presentation reel"
               />
             ) : null}
 
@@ -167,7 +167,7 @@ export default function ProjectFilm({ videoSrc = '/assets/work/digital-studio-re
                     <span className="hidden sm:inline">•</span>
                     <span className="hidden sm:inline">COLOR GRADE: CINEMATIC MONO</span>
                   </div>
-                  <span>DIGITAL STUDIO PORTFOLIO</span>
+                  <span>SUSTHIR DIGITAL PORTFOLIO</span>
                 </div>
 
               </div>

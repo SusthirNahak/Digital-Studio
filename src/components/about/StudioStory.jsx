@@ -71,11 +71,11 @@ export default function StudioStory() {
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                <Eyebrow variant="accent">STUDIO PHILOSOPHY</Eyebrow>
+                <Eyebrow variant="accent">SUSTHIR DIGITAL PHILOSOPHY</Eyebrow>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-950 leading-tight">
-                A small studio.
+                Susthir Digital.
                 <br />
                 Serious digital work.
               </h2>
@@ -83,7 +83,7 @@ export default function StudioStory() {
 
             <div className="space-y-5 text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
               <p className="text-neutral-900 font-medium text-lg sm:text-xl leading-relaxed">
-                We believe good digital work should be clear, useful and built to last.
+                Susthir Digital is an independent digital studio focused on websites, ecommerce and web applications.
               </p>
 
               <p>
@@ -133,7 +133,7 @@ export default function StudioStory() {
                   &ldquo;A website should make your business simpler to understand, not more complicated to run.&rdquo;
                 </p>
                 <div className="text-xs font-mono text-neutral-500">
-                  — Digital Studio Thesis
+                  — Susthir Digital Thesis
                 </div>
               </blockquote>
 

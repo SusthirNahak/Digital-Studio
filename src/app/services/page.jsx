@@ -12,7 +12,7 @@ import { ArrowUpRight, ArrowDown, Check, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Services — Websites, Ecommerce & Web Applications',
+  title: 'Services — Susthir Digital',
   description:
     'Explore our digital engineering services: WordPress websites, Shopify ecommerce storefronts, React and Next.js platforms, custom web applications, and focused redesigns.',
 };

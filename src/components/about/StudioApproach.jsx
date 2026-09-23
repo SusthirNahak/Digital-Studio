@@ -77,7 +77,7 @@ export default function StudioApproach() {
             <div className="max-w-3xl space-y-6 relative z-10">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                <Eyebrow variant="accent">INDEPENDENT STUDIO MODEL</Eyebrow>
+                <Eyebrow variant="accent">SUSTHIR DIGITAL MODEL</Eyebrow>
               </div>
 
               <blockquote className="space-y-4">
@@ -91,7 +91,7 @@ export default function StudioApproach() {
               </blockquote>
 
               <p className="text-base sm:text-lg text-neutral-400 leading-relaxed font-normal pt-2">
-                Working directly with an independent studio brings clear advantages: direct communication with the person writing your code, fewer bureaucratic handoffs, practical technical decisions, and total accountability from start to finish.
+                Working directly with Susthir Digital brings clear advantages: direct communication with the person writing your code, fewer bureaucratic handoffs, practical technical decisions, and total accountability from start to finish.
               </p>
 
               <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-neutral-800 text-xs font-mono text-neutral-300">

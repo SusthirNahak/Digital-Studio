@@ -55,7 +55,7 @@ export default function StudioIdentity() {
           <div className="space-y-2 text-center">
             <div className="flex items-center justify-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-              <Eyebrow variant="accent">THE STUDIO</Eyebrow>
+              <Eyebrow variant="accent">ABOUT SUSTHIR DIGITAL</Eyebrow>
             </div>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-neutral-950">
               Digital work led from the ground up.
@@ -84,16 +84,16 @@ export default function StudioIdentity() {
                   {imageError && (
                     <>
                       <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400">
-                        <span>DS // ARCHIVE</span>
+                        <span>SD // ARCHIVE</span>
                         <span className="text-[var(--color-accent)]">20.95° N</span>
                       </div>
 
                       <div className="my-auto text-center space-y-1">
                         <span className="text-4xl font-mono font-bold tracking-tight text-white block">
-                          DS
+                          SD
                         </span>
                         <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block">
-                          DIGITAL STUDIO
+                          SUSTHIR DIGITAL
                         </span>
                       </div>
 
@@ -156,7 +156,7 @@ export default function StudioIdentity() {
 
                 <div className="pt-2">
                   <Button href="/contact" variant="secondary" size="sm" className="group">
-                    <span>Inquire with the Studio</span>
+                    <span>Inquire with Susthir Digital</span>
                     <ArrowUpRight className="h-3.5 w-3.5 text-neutral-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Button>
                 </div>

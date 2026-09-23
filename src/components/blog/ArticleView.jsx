@@ -176,7 +176,7 @@ export default function ArticleView({ article, relatedArticles = [] }) {
             <div className="mt-14 pt-8 border-t border-neutral-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-neutral-500">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-neutral-900" />
-                <span className="text-neutral-900 font-semibold">Digital Studio Journal</span>
+                <span className="text-neutral-900 font-semibold">Susthir Digital Journal</span>
                 <span>·</span>
                 <span>Systems &amp; Architecture</span>
               </div>

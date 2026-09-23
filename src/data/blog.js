@@ -1,5 +1,5 @@
 /**
- * Editorial Journal Dataset for Digital Studio
+ * Editorial Journal Dataset for Susthir Digital
  * 
  * Strict editorial guidelines:
  * - Practical architectural notes on web engineering, CMS, and digital products.

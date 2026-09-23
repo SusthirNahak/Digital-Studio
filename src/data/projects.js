@@ -1,5 +1,5 @@
 /**
- * Real Portfolio Projects Dataset for Digital Studio
+ * Real Portfolio Projects Dataset for Susthir Digital
  * 
  * Strict Data Integrity Guidelines:
  * - Factual client and project data verified from supplied public URLs.

@@ -17,15 +17,15 @@ export async function generateMetadata({ params }) {
 
   if (!article) {
     return {
-      title: 'Article Not Found — Digital Studio',
+      title: 'Article Not Found — Susthir Digital',
     };
   }
 
   return {
-    title: `${article.title} — Journal | Digital Studio`,
+    title: `${article.title} — Journal | Susthir Digital`,
     description: article.excerpt,
     openGraph: {
-      title: `${article.title} — Digital Studio`,
+      title: `${article.title} — Susthir Digital`,
       description: article.excerpt,
       type: 'article',
       publishedTime: article.date,
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${article.title} — Digital Studio`,
+      title: `${article.title} — Susthir Digital`,
       description: article.excerpt,
     },
   };

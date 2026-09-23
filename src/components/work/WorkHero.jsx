@@ -78,7 +78,7 @@ export default function WorkHero() {
               ref={copyRef}
               className="text-lg sm:text-xl text-neutral-600 leading-relaxed font-normal text-balance max-w-2xl"
             >
-              A selection of websites, ecommerce experiences and web applications across the platforms we work with.
+              Selected work built across websites, ecommerce and web applications.
             </p>
 
             {/* Action Row */}
@@ -116,7 +116,7 @@ export default function WorkHero() {
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-emerald-500" />
                   <span className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-900">
-                    Studio Index / Portfolio
+                    Susthir Digital Portfolio
                   </span>
                 </div>
                 <span className="text-[10px] font-mono text-neutral-400 bg-neutral-100 px-2 py-0.5 rounded-[var(--radius-subtle)]">

@@ -10,9 +10,9 @@ import StudioApproach from '@/components/about/StudioApproach';
 import StudioIdentity from '@/components/about/StudioIdentity';
 
 export const metadata = {
-  title: 'About — Digital Studio',
+  title: 'About — Susthir Digital',
   description:
-    'Learn about Digital Studio, our approach to digital work, and how we build websites, ecommerce experiences and custom web applications from Odisha for businesses everywhere.',
+    'Learn about Susthir Digital, our approach to digital work, and how we build websites, ecommerce experiences and custom web applications from Odisha for businesses everywhere.',
 };
 
 export default function AboutPage() {

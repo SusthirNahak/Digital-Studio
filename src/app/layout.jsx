@@ -1,8 +1,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Digital Studio — Websites, Ecommerce & Web Applications',
-  description: 'Digital Studio crafts high-performance websites, Shopify stores, and custom web applications for growing businesses in Odisha, India, and worldwide.',
+  title: 'Susthir Digital — Websites, Ecommerce & Web Applications',
+  description:
+    'Websites, ecommerce experiences and custom web applications built for growing businesses.',
 };
 
 export const viewport = {

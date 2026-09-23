@@ -65,7 +65,7 @@ export default function AboutHero() {
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <Eyebrow variant="accent">ABOUT THE STUDIO</Eyebrow>
+              <Eyebrow variant="accent">ABOUT SUSTHIR DIGITAL</Eyebrow>
             </div>
 
             <h1
@@ -120,13 +120,13 @@ export default function AboutHero() {
                   <div className="flex items-center gap-2">
                     <Compass className="h-4 w-4 text-[var(--color-accent)]" />
                     <span className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-900">
-                      STUDIO CHARTER
+                      SUSTHIR DIGITAL CHARTER
                     </span>
                   </div>
                   <p className="text-[11px] font-mono text-neutral-400">INDEX // 00-ST</p>
                 </div>
                 <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-[var(--radius-subtle)] font-medium">
-                  ACTIVE STUDIO
+                  ACTIVE PRACTICE
                 </span>
               </div>
 

@@ -22,7 +22,7 @@ function ProjectFramePreview({ project, priority = false }) {
     : `${project.slug}.internal`;
 
   return (
-    <div className="w-full rounded-[var(--radius-default)] border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden shadow-xs hover:border-neutral-400 transition-colors group/frame">
+    <div className="w-full rounded-[var(--radius-default)] border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden shadow-xs hover:border-neutral-400 hover:shadow-xl transition-all duration-300 transform-gpu hover:-translate-y-1 group/frame">
       {/* Browser Top Bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-100 border-b border-neutral-200">
         <div className="flex items-center gap-1.5">

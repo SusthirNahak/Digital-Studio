@@ -12,9 +12,9 @@ import ProjectFilm from '@/components/work/ProjectFilm';
 import { ArrowUpRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Work — Digital Studio',
+  title: 'Work — Susthir Digital',
   description:
-    'Selected websites, ecommerce experiences and custom web applications built by Digital Studio.',
+    'Selected work built across websites, ecommerce and web applications.',
 };
 
 export default function WorkPage() {

@@ -50,10 +50,10 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-3">
             <div className="flex items-center gap-2 text-white font-semibold text-base tracking-tight">
               <span className="h-2 w-2 rounded-full bg-white inline-block" />
-              <span>Digital Studio</span>
+              <span>Susthir Digital</span>
             </div>
             <p className="text-neutral-400 max-w-xs leading-relaxed">
-              An engineering-led digital studio focused on high-performance WordPress, Shopify, and Next.js platforms.
+              Websites, ecommerce experiences and custom web applications for growing businesses.
             </p>
           </div>
 
@@ -99,7 +99,7 @@ export default function Footer() {
 
         {/* Lower Footer: Copyright & Fine Print */}
         <div className="py-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
-          <p>© {currentYear} Digital Studio. All rights reserved.</p>
+          <p>© {currentYear} Susthir Digital. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="hover:text-neutral-200 cursor-pointer">Privacy Policy</span>
             <span className="hover:text-neutral-200 cursor-pointer">Terms of Service</span>

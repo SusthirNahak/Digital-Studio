@@ -59,7 +59,7 @@ export default function Header() {
             className="group inline-flex items-center gap-2.5 text-base sm:text-lg font-semibold tracking-tight text-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs"
           >
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-neutral-900 transition-transform group-hover:scale-125" />
-            <span className="font-bold">Digital Studio</span>
+            <span className="font-bold">Susthir Digital</span>
           </Link>
 
           {/* Desktop Navigation */}
