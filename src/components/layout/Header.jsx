@@ -43,12 +43,19 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]/90 backdrop-blur-md transition-colors">
+    <header
+      className={`sticky top-0 z-50 w-full border-b transition-colors duration-150 ${
+        mobileMenuOpen
+          ? 'bg-white border-neutral-200 shadow-sm'
+          : 'bg-white/95 backdrop-blur-md border-neutral-200/80 shadow-xs'
+      }`}
+    >
       <Container size="default">
         <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo / Brand */}
           <Link
             href="/"
+            onClick={() => setMobileMenuOpen(false)}
             className="group inline-flex items-center gap-2.5 text-base sm:text-lg font-semibold tracking-tight text-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs"
           >
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-neutral-900 transition-transform group-hover:scale-125" />
@@ -91,64 +98,101 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 text-neutral-800 hover:text-neutral-950 hover:bg-neutral-100 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] cursor-pointer"
+              className="inline-flex items-center justify-center p-2.5 text-neutral-900 bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-300 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] cursor-pointer transition-colors"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileMenuOpen ? (
-                <X className="h-5 w-5" aria-hidden="true" />
+                <X className="h-5 w-5 text-neutral-950 stroke-[2.5]" aria-hidden="true" />
               ) : (
-                <Menu className="h-5 w-5" aria-hidden="true" />
+                <Menu className="h-5 w-5 text-neutral-950 stroke-[2.5]" aria-hidden="true" />
               )}
             </button>
           </div>
         </div>
       </Container>
 
-      {/* Accessible Mobile Drawer */}
+      {/* Solid High-Contrast Mobile Navigation Overlay */}
       {mobileMenuOpen && (
-        <div
-          id="mobile-nav"
-          className="fixed inset-x-0 top-[65px] bottom-0 z-40 bg-[var(--color-bg)] px-6 py-8 border-t border-[var(--color-border)] flex flex-col justify-between md:hidden"
-        >
-          <nav aria-label="Mobile Navigation" className="flex flex-col space-y-4">
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`text-2xl font-medium tracking-tight py-1 transition-colors flex items-center justify-between ${
-                    isActive
-                      ? 'text-[var(--color-accent)] font-semibold'
-                      : 'text-neutral-900 hover:text-[var(--color-accent)]'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  {isActive && <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />}
-                </Link>
-              );
-            })}
-          </nav>
+        <>
+          {/* Full-screen backdrop to completely obscure page content */}
+          <div
+            className="fixed inset-0 top-16 sm:top-20 z-40 bg-neutral-950/60 backdrop-blur-xs md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
 
-          <div className="pt-6 border-t border-neutral-200">
-            <Button
-              href="/contact"
-              variant="primary"
-              size="lg"
-              className="w-full justify-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Start a Project
-            </Button>
-            <p className="mt-4 text-xs text-neutral-500 text-center">
-              Available for projects in Odisha & remote worldwide
-            </p>
+          {/* Fully opaque white drawer container */}
+          <div
+            id="mobile-nav"
+            className="fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 bg-white border-t border-neutral-200 flex flex-col justify-between overflow-y-auto shadow-2xl md:hidden"
+            style={{ backgroundColor: '#ffffff' }}
+          >
+            <div className="px-6 py-6 space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
+                <span className="text-[11px] font-mono uppercase tracking-wider font-semibold text-neutral-400">
+                  Navigation
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-medium">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Studio Active</span>
+                </span>
+              </div>
+
+              <nav aria-label="Mobile Navigation" className="flex flex-col space-y-1.5">
+                {NAV_LINKS.map((link) => {
+                  const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`group py-3.5 px-3.5 rounded-lg text-lg font-semibold tracking-tight transition-all flex items-center justify-between ${
+                        isActive
+                          ? 'bg-neutral-100 text-neutral-950 font-bold border-l-4 border-[var(--color-accent)] pl-3.5'
+                          : 'text-neutral-800 hover:text-neutral-950 hover:bg-neutral-50 active:bg-neutral-100'
+                      }`}
+                    >
+                      <span className="group-hover:translate-x-0.5 transition-transform">{link.label}</span>
+                      {isActive ? (
+                        <span className="text-[10px] font-mono uppercase tracking-wider bg-[var(--color-accent)] text-white px-2 py-0.5 rounded font-semibold">
+                          Current
+                        </span>
+                      ) : (
+                        <span className="text-neutral-400 text-sm font-mono">
+                          →
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Bottom Actions & Studio Footer Info */}
+            <div className="p-6 bg-neutral-50 border-t border-neutral-200/90 space-y-4">
+              <Button
+                href="/contact"
+                variant="primary"
+                size="lg"
+                className="w-full justify-center text-sm font-semibold py-3.5 bg-neutral-950 text-white hover:bg-neutral-800 shadow-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Start a Project
+              </Button>
+              <div className="space-y-1 text-center">
+                <p className="text-xs font-medium text-neutral-800">
+                  Odisha, India · Available Worldwide
+                </p>
+                <p className="text-[11px] text-neutral-500 font-mono">
+                  Direct engineer access · Transparent delivery
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

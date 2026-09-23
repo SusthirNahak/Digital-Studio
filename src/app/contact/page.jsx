@@ -5,7 +5,7 @@ import Section from '@/components/ui/Section';
 import FinalCTA from '@/components/home/FinalCTA';
 import ContactHero from '@/components/contact/ContactHero';
 import ProjectInquiryForm from '@/components/contact/ProjectInquiryForm';
-import ContactDetails, { DirectChannelsCard, StartingPointsCard } from '@/components/contact/ContactDetails';
+import ContactDetails, { DirectChannelsCard, EngagementStandardsCard } from '@/components/contact/ContactDetails';
 import ContactProcess from '@/components/contact/ContactProcess';
 
 export const metadata = {
@@ -46,9 +46,9 @@ export default function ContactPage() {
                 <ContactDetails />
               </div>
 
-              {/* Mobile-only Starting Points rendered after the form */}
+              {/* Mobile-only Engagement Standards rendered after the form */}
               <div className="lg:hidden w-full">
-                <StartingPointsCard />
+                <EngagementStandardsCard />
               </div>
 
             </div>

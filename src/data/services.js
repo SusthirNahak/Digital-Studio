@@ -21,7 +21,6 @@ export const SERVICES = [
     ],
     technologies: ['WordPress', 'WooCommerce', 'Elementor', 'ACF', 'PHP'],
     href: '/contact',
-    startingPrice: 'From ₹10K',
     previewType: 'website',
   },
   {
@@ -46,7 +45,6 @@ export const SERVICES = [
     ],
     technologies: ['Shopify', 'Liquid', 'Custom Apps', 'Store Migration', 'Checkout Optimization'],
     href: '/contact',
-    startingPrice: 'From ₹20K',
     previewType: 'ecommerce',
   },
   {
@@ -70,7 +68,6 @@ export const SERVICES = [
     ],
     technologies: ['React', 'Next.js', 'JavaScript', 'REST & GraphQL APIs', 'Tailwind CSS'],
     href: '/contact',
-    startingPrice: 'From ₹25K',
     previewType: 'app',
   },
   {
@@ -93,7 +90,6 @@ export const SERVICES = [
     ],
     technologies: ['Next.js', 'API Integration', 'PostgreSQL / MySQL', 'Node.js', 'Auth & Roles'],
     href: '/contact',
-    startingPrice: 'Custom quote',
     previewType: 'dashboard',
   },
   {
@@ -116,7 +112,6 @@ export const SERVICES = [
     ],
     technologies: ['Landing Pages', 'UX Refinements', 'Mobile Usability', 'Speed & SEO Prep'],
     href: '/contact',
-    startingPrice: 'From ₹5K',
     previewType: 'landing',
   },
 ];

@@ -1,13 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Eyebrow from '@/components/ui/Eyebrow';
-import { PRICING_ITEMS } from '@/data/pricing';
 import { PROCESS_STEPS } from '@/data/process';
-import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -96,93 +93,14 @@ export default function PricingProcess() {
   }, []);
 
   return (
-    <Section id="pricing" spacing="generous" className="bg-[var(--color-bg)] border-b border-[var(--color-border-subtle)]">
+    <Section id="process" spacing="generous" className="bg-[var(--color-bg)] border-b border-[var(--color-border-subtle)]">
       <Container size="default">
-        
         {/* ============================================================ */}
-        {/* PART 1: EDITORIAL PRICING (STARTING POINTS)                   */}
-        {/* ============================================================ */}
-        <div className="space-y-10 sm:space-y-12">
-          
-          {/* Section Header */}
-          <div className="max-w-3xl space-y-4">
-            <Eyebrow variant="accent">Starting Points</Eyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-900 leading-[1.1] text-balance">
-              Clear starting points. Custom scope.
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl">
-              Starting prices help set realistic expectations. Final pricing is scoped transparently based on your design requirements, integrations, and functional depth.
-            </p>
-          </div>
-
-          {/* Editorial Pricing List with refined hover interaction */}
-          <div className="divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
-            {PRICING_ITEMS.map((item) => (
-              <div
-                key={item.id}
-                tabIndex={0}
-                className="group relative py-6 sm:py-8 transition-all duration-200 hover:bg-[var(--color-surface-subtle)]/70 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-[var(--radius-default)] focus-visible:outline-none cursor-default"
-              >
-                {/* Active blue indicator marker */}
-                <div className="absolute left-0 top-6 bottom-6 w-[2px] bg-[var(--color-accent)] opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200 hidden sm:block" />
-
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-8">
-                  
-                  {/* Service Title & Scope */}
-                  <div className="md:w-5/12 space-y-1">
-                    <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 tracking-tight group-hover:text-[var(--color-accent)] group-focus-visible:text-[var(--color-accent)] transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-neutral-500 leading-normal">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Starting Price Figure with subtle hover shift */}
-                  <div className="md:w-3/12 flex items-baseline">
-                    <span className="text-2xl sm:text-3xl font-semibold text-neutral-900 font-mono tracking-tight transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1">
-                      {item.startingPrice}
-                    </span>
-                  </div>
-
-                  {/* Contextual CTA */}
-                  <div className="md:w-4/12 flex md:justify-end">
-                    <Link
-                      href={item.href}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-800 group-hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-xs transition-colors"
-                    >
-                      <span>Inquire About {item.title}</span>
-                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </Link>
-                  </div>
-
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Pricing Disclaimer & Inquiry Link */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-            <p className="text-xs text-neutral-500 max-w-xl">
-              * Starting prices reflect base builds. Every project is scoped individually with no hidden fees or surprise scope creep.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-900 hover:text-[var(--color-accent)] transition-colors select-none group"
-            >
-              <span>Not sure which option fits? Tell us about your project</span>
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-          </div>
-
-        </div>
-
-        {/* ============================================================ */}
-        {/* PART 2: 5-STEP HOW WE WORK PROCESS TIMELINE (PINNED PIPELINE) */}
+        {/* 5-STEP HOW WE WORK PROCESS TIMELINE (PINNED PIPELINE)        */}
         {/* ============================================================ */}
         <div
           ref={processPinTriggerRef}
-          className="mt-24 sm:mt-32 pt-16 sm:pt-20 border-t border-[var(--color-border)] space-y-10 sm:space-y-14"
+          className="space-y-10 sm:space-y-14"
         >
           
           {/* Process Header with Dynamic Process Step Indicator */}

@@ -281,11 +281,6 @@ export default function ServicesSection() {
                         >
                           {service.title}
                         </h3>
-
-                        {/* Starting Price Badge */}
-                        <span className="shrink-0 text-xs font-mono font-medium text-neutral-600 bg-white border border-neutral-200 px-2.5 py-0.5 rounded-[var(--radius-subtle)]">
-                          {service.startingPrice}
-                        </span>
                       </div>
 
                       <p className="text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl">
@@ -341,8 +336,8 @@ export default function ServicesSection() {
                     </span>
                     <p className="text-base font-semibold text-neutral-900">{activeService.title}</p>
                   </div>
-                  <span className="text-xs font-mono font-semibold text-neutral-800 bg-neutral-100 border border-neutral-200 px-2.5 py-1 rounded">
-                    {activeService.startingPrice}
+                  <span className="text-[11px] font-mono font-medium text-neutral-600 bg-neutral-100 border border-neutral-200 px-2.5 py-1 rounded">
+                    TAILORED SCOPE
                   </span>
                 </div>
 

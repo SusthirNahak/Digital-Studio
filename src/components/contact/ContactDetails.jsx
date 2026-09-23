@@ -1,6 +1,5 @@
 'use client';
 
-import { PRICING_ITEMS } from '@/data/pricing';
 import Eyebrow from '@/components/ui/Eyebrow';
 import {
   MessageSquare,
@@ -136,27 +135,19 @@ export function DirectChannelsCard() {
   );
 }
 
-export function StartingPointsCard() {
-  const startingPoints = [
+export function EngagementStandardsCard() {
+  const standards = [
     {
-      label: 'WEB DESIGN',
-      item: PRICING_ITEMS.find((p) => p.id === 'wordpress'),
-      fallbackPrice: 'From ₹10K',
+      title: 'Direct Engineer Access',
+      desc: 'No account managers or proxy layers. You communicate directly with the developer building your platform.',
     },
     {
-      label: 'SHOPIFY',
-      item: PRICING_ITEMS.find((p) => p.id === 'shopify'),
-      fallbackPrice: 'From ₹20K',
+      title: 'Prompt Initial Response',
+      desc: 'All project inquiries receive a technical review and written reply within 24 business hours.',
     },
     {
-      label: 'REACT / NEXT.JS',
-      item: PRICING_ITEMS.find((p) => p.id === 'react-nextjs'),
-      fallbackPrice: 'From ₹25K',
-    },
-    {
-      label: 'WEB APPLICATIONS',
-      item: PRICING_ITEMS.find((p) => p.id === 'web-application'),
-      fallbackPrice: 'Custom quote',
+      title: 'Itemized Milestone Scope',
+      desc: 'Clear deliverable timelines and verification phases defined upfront before work begins.',
     },
   ];
 
@@ -164,29 +155,29 @@ export function StartingPointsCard() {
     <div className="rounded-[var(--radius-default)] bg-white border border-neutral-200 p-6 sm:p-7 shadow-xs space-y-5">
       <div className="space-y-1 pb-3 border-b border-neutral-100">
         <span className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-900 block">
-          STARTING POINTS
+          WHAT TO EXPECT
         </span>
         <p className="text-xs text-neutral-500 font-normal">
-          Transparent minimums. Scope is tailored per engagement.
+          Disciplined engineering and predictable project execution.
         </p>
       </div>
 
-      <div className="divide-y divide-neutral-100 font-mono text-xs">
-        {startingPoints.map((point) => {
-          const price = point.item ? point.item.startingPrice : point.fallbackPrice;
-
-          return (
-            <div key={point.label} className="py-2.5 flex items-center justify-between">
-              <span className="text-neutral-700 font-medium">{point.label}</span>
-              <span className="font-semibold text-neutral-950">{price}</span>
-            </div>
-          );
-        })}
+      <div className="space-y-4 text-xs">
+        {standards.map((item) => (
+          <div key={item.title} className="space-y-1">
+            <span className="font-semibold text-neutral-900 block font-mono text-[11px] uppercase tracking-wide">
+              {item.title}
+            </span>
+            <p className="text-neutral-600 leading-relaxed font-sans text-xs">
+              {item.desc}
+            </p>
+          </div>
+        ))}
       </div>
 
       <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-[11px] font-mono text-neutral-400">
-        <span>SOURCE: PRICING LEDGER</span>
-        <span>FIXED QUOTES</span>
+        <span>WORKFLOW: DIRECT</span>
+        <span>SPEC-DRIVEN</span>
       </div>
     </div>
   );
@@ -196,7 +187,7 @@ export default function ContactDetails() {
   return (
     <aside className="space-y-6 lg:sticky lg:top-28">
       <DirectChannelsCard />
-      <StartingPointsCard />
+      <EngagementStandardsCard />
     </aside>
   );
 }

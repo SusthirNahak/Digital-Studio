@@ -13,15 +13,6 @@ const SERVICE_OPTIONS = [
   'Not sure yet',
 ];
 
-const BUDGET_OPTIONS = [
-  'Under ₹10K',
-  '₹10K – ₹25K',
-  '₹25K – ₹50K',
-  '₹50K – ₹1L',
-  '₹1L+',
-  'Not sure yet',
-];
-
 const TIMELINE_OPTIONS = [
   'ASAP',
   '2–4 weeks',
@@ -224,9 +215,9 @@ export default function ProjectInquiryForm() {
             </div>
 
             <div className="p-3 rounded bg-white border border-neutral-200/80">
-              <span className="text-neutral-400 block text-[10px] uppercase">BUDGET &amp; TIMELINE</span>
+              <span className="text-neutral-400 block text-[10px] uppercase">DESIRED TIMELINE</span>
               <span className="font-semibold text-neutral-900 block">
-                {submittedBrief.budget || 'Undisclosed'} · {submittedBrief.timeline || 'Flexible'}
+                {submittedBrief.timeline || 'Flexible'}
               </span>
             </div>
           </div>
@@ -455,39 +446,8 @@ export default function ProjectInquiryForm() {
           )}
         </div>
 
-        {/* ROW 4: Budget & Timeline (Optional) */}
+        {/* ROW 4: Timeline & Source (Optional) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Budget */}
-          <div className="space-y-2">
-            <label
-              htmlFor="budget"
-              className="text-xs font-mono uppercase tracking-wider font-semibold text-neutral-700 block"
-            >
-              Estimated Budget <span className="text-neutral-400 font-normal">(Optional)</span>
-            </label>
-            <div className="relative">
-              <select
-                id="budget"
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full h-11 px-3.5 text-sm sm:text-base text-neutral-900 bg-neutral-50/50 rounded-[var(--radius-subtle)] border border-neutral-300 hover:border-neutral-400 appearance-none transition-colors cursor-pointer focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
-              >
-                <option value="">Select budget range...</option>
-                {BUDGET_OPTIONS.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-neutral-500">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
           {/* Timeline */}
           <div className="space-y-2">
             <label
@@ -508,6 +468,37 @@ export default function ProjectInquiryForm() {
                 {TIMELINE_OPTIONS.map((t) => (
                   <option key={t} value={t}>
                     {t}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-neutral-500">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Source */}
+          <div className="space-y-2">
+            <label
+              htmlFor="source"
+              className="text-xs font-mono uppercase tracking-wider font-semibold text-neutral-700 block"
+            >
+              How did you find us? <span className="text-neutral-400 font-normal">(Optional)</span>
+            </label>
+            <div className="relative">
+              <select
+                id="source"
+                name="source"
+                value={formData.source}
+                onChange={handleChange}
+                className="w-full h-11 px-3.5 text-sm sm:text-base text-neutral-900 bg-neutral-50/50 rounded-[var(--radius-subtle)] border border-neutral-300 hover:border-neutral-400 appearance-none transition-colors cursor-pointer focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
+              >
+                <option value="">Select discovery channel...</option>
+                {SOURCE_OPTIONS.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
                   </option>
                 ))}
               </select>
@@ -560,37 +551,6 @@ export default function ProjectInquiryForm() {
               <span>{errors.description}</span>
             </p>
           )}
-        </div>
-
-        {/* ROW 6: Source (Optional) */}
-        <div className="space-y-2">
-          <label
-            htmlFor="source"
-            className="text-xs font-mono uppercase tracking-wider font-semibold text-neutral-700 block"
-          >
-            How did you find us? <span className="text-neutral-400 font-normal">(Optional)</span>
-          </label>
-          <div className="relative">
-            <select
-              id="source"
-              name="source"
-              value={formData.source}
-              onChange={handleChange}
-              className="w-full h-11 px-3.5 text-sm sm:text-base text-neutral-900 bg-neutral-50/50 rounded-[var(--radius-subtle)] border border-neutral-300 hover:border-neutral-400 appearance-none transition-colors cursor-pointer focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent"
-            >
-              <option value="">Select discovery channel...</option>
-              {SOURCE_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-neutral-500">
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
         </div>
 
         {/* Submit Action Bar */}

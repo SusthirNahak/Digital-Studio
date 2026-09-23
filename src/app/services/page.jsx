@@ -202,14 +202,14 @@ export default function ServicesPage() {
                         </div>
                       </div>
 
-                      {/* Pricing & Project Action */}
+                      {/* Project Action */}
                       <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="space-y-0.5">
                           <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
-                            Starting Point
+                            Scope &amp; Delivery
                           </span>
-                          <p className="text-xl sm:text-2xl font-bold font-mono text-neutral-950">
-                            {service.startingPrice}
+                          <p className="text-sm font-medium text-neutral-700">
+                            Custom scoped per business requirements
                           </p>
                         </div>
 
@@ -244,29 +244,7 @@ export default function ServicesPage() {
         </div>
 
         {/* ============================================================ */}
-        {/* SECTION 4: PRICING TRANSPARENCY NOTICE                        */}
-        {/* ============================================================ */}
-        <Section spacing="compact" className="bg-white border-y border-[var(--color-border)]">
-          <Container size="default">
-            <div className="max-w-3xl mx-auto p-6 sm:p-8 rounded-[var(--radius-default)] bg-neutral-50 border border-neutral-200 space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-900">
-                  Pricing Clarity & Scope
-                </span>
-              </div>
-              <p className="text-base sm:text-lg font-semibold text-neutral-900 leading-snug">
-                Starting points — final scope is quoted based on requirements.
-              </p>
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
-                Every project has distinct architectural demands, content volumes, and third-party integrations. After an initial discovery conversation, we provide an itemized fixed-price proposal with milestones and timelines before any commitment is made.
-              </p>
-            </div>
-          </Container>
-        </Section>
-
-        {/* ============================================================ */}
-        {/* SECTION 5: HOW WE WORK PROCESS (COMPACT FLOW)                 */}
+        {/* SECTION 4: HOW WE WORK PROCESS (COMPACT FLOW)                 */}
         {/* ============================================================ */}
         <Section spacing="default" className="border-b border-[var(--color-border)]">
           <Container size="default">
