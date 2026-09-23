@@ -6,7 +6,7 @@ import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Eyebrow from '@/components/ui/Eyebrow';
 import Button from '@/components/ui/Button';
-import { PROJECTS } from '@/data/projects';
+import { PROJECTS, FEATURED_PROJECTS } from '@/data/projects';
 import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -257,9 +257,9 @@ export default function SelectedWork() {
           </div>
         </div>
 
-        {/* Alternating Project Showcases */}
+        {/* Alternating Project Showcases (Showing only 4 featured projects on homepage) */}
         <div ref={containerRef} className="space-y-16 sm:space-y-24">
-          {PROJECTS.map((project, index) => {
+          {(FEATURED_PROJECTS || PROJECTS.filter((p) => p.featured)).map((project, index) => {
             const isEven = index % 2 === 1;
 
             return (

@@ -112,7 +112,7 @@ export const PROJECTS = [
       'Web design and development for Genrise, an enterprise solutions and talent advisory firm based in Delhi, India, built using Webflow.',
     role: 'Web Design & Implementation',
     services: ['Webflow Development', 'Responsive Design', 'Interactive UI'],
-    featured: true,
+    featured: false,
     coverImage: '/assets/projects/genrise/cover.jpg',
     gallery: [],
     confidential: false,
@@ -252,4 +252,13 @@ export const PROJECTS = [
   },
 ];
 
-export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured);
+const FEATURED_SLUG_ORDER = [
+  'natural-elixirs-supplements',
+  'neoplan-foods',
+  'pflege-bergstrasse',
+  'the-smart-vision',
+];
+
+export const FEATURED_PROJECTS = FEATURED_SLUG_ORDER.map((slug) =>
+  PROJECTS.find((project) => project.slug === slug && project.featured)
+).filter(Boolean);
