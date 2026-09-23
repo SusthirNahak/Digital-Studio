@@ -9,6 +9,7 @@
     "start": "next start -p 3000 -H 0.0.0.0"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
     "@tailwindcss/postcss": "^4.3.3",
     "gsap": "^3.15.0",
     "lucide-react": "^1.47.0",
@@ -19,6 +20,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.21"
+    "autoprefixer": "^10.4.21",
+    "prisma": "^6.19.3"
   }
 }
