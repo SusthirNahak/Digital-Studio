@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
@@ -50,17 +51,9 @@ const DISCIPLINE_ITEMS = [
 ];
 
 /**
- * Visual architectural wireframe preview for each project
+ * Visual screenshot preview for each project
  */
 function ProjectCardPreview({ project }) {
-  const isCommerce =
-    project.category?.toLowerCase().includes('commerce') ||
-    project.category?.toLowerCase().includes('food') ||
-    project.category?.toLowerCase().includes('retail') ||
-    project.slug?.includes('supplements');
-  const isApp = project.technology === 'Next.js' && !isCommerce;
-  const isWebflow = project.technology === 'Webflow';
-
   const domain = project.url
     ? project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
     : `${project.slug}.internal`;
@@ -82,107 +75,23 @@ function ProjectCardPreview({ project }) {
         </span>
       </div>
 
-      {/* Mini Architectural Layout Representation */}
-      <div className="p-4 sm:p-5 bg-white space-y-3 min-h-[135px] flex flex-col justify-between">
-        {isApp ? (
-          <>
-            <div className="flex items-center justify-between pb-2 border-b border-neutral-100 text-[10px] font-mono">
-              <div className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-semibold text-neutral-900">APP SYSTEM</span>
-              </div>
-              <span className="text-emerald-600 font-medium">Vercel Edge</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              <div className="p-2 bg-neutral-50 border border-neutral-100 rounded-xs space-y-1">
-                <div className="h-1.5 w-8 bg-neutral-300 rounded-xs" />
-                <div className="h-2 w-10 bg-neutral-900 rounded-xs font-mono font-bold" />
-              </div>
-              <div className="p-2 bg-neutral-50 border border-neutral-100 rounded-xs space-y-1">
-                <div className="h-1.5 w-8 bg-neutral-300 rounded-xs" />
-                <div className="h-2 w-8 bg-[var(--color-accent)] rounded-xs" />
-              </div>
-              <div className="p-2 bg-neutral-950 text-white border border-neutral-800 rounded-xs p-1.5 space-y-0.5">
-                <span className="text-[8px] font-mono text-neutral-400 block">Status</span>
-                <span className="text-[9px] font-mono text-emerald-400 font-semibold block">200 OK</span>
-              </div>
-            </div>
-            <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400 pt-1 border-t border-neutral-100">
-              <span>Authenticated Logic</span>
-              <span className="text-neutral-700 font-medium">Tailwind + Next</span>
-            </div>
-          </>
-        ) : isCommerce ? (
-          <>
-            <div className="flex items-center justify-between pb-2 border-b border-neutral-100 text-[10px] font-mono">
-              <span className="font-semibold text-neutral-900 uppercase">Product Showcase</span>
-              <span className="text-emerald-600">Active Catalog</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              <div className="p-1.5 bg-neutral-50 border border-neutral-100 rounded-xs space-y-1">
-                <div className="h-9 bg-neutral-100 rounded-xs flex items-center justify-center">
-                  <span className="text-[8px] font-mono text-neutral-400">SKU</span>
-                </div>
-                <div className="h-1.5 w-full bg-neutral-300 rounded-xs" />
-              </div>
-              <div className="p-1.5 bg-neutral-50 border border-neutral-100 rounded-xs space-y-1">
-                <div className="h-9 bg-neutral-100 rounded-xs flex items-center justify-center">
-                  <span className="text-[8px] font-mono text-neutral-400">SKU</span>
-                </div>
-                <div className="h-1.5 w-full bg-neutral-300 rounded-xs" />
-              </div>
-              <div className="p-2 bg-neutral-950 text-white rounded-xs flex flex-col justify-between">
-                <span className="text-[8px] font-mono text-neutral-400">Cart Flow</span>
-                <span className="text-[9px] font-mono font-bold text-white">Instant Buy</span>
-              </div>
-            </div>
-            <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400 pt-1 border-t border-neutral-100">
-              <span>Fast Ingest</span>
-              <span className="text-neutral-700 font-medium">Responsive Store</span>
-            </div>
-          </>
-        ) : isWebflow ? (
-          <>
-            <div className="flex items-center justify-between pb-2 border-b border-neutral-100 text-[10px] font-mono">
-              <span className="font-semibold text-neutral-900 uppercase">Interactive Layout</span>
-              <span className="text-[var(--color-accent)] font-semibold">Webflow CMS</span>
-            </div>
-            <div className="space-y-2">
-              <div className="h-3 w-3/4 bg-neutral-900 rounded-xs" />
-              <div className="h-2 w-full bg-neutral-200 rounded-xs" />
-              <div className="h-2 w-2/3 bg-neutral-200 rounded-xs" />
-            </div>
-            <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400 pt-1 border-t border-neutral-100">
-              <span>CMS Collections</span>
-              <span className="text-neutral-700 font-medium">Micro-Interactions</span>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="flex items-center justify-between pb-2 border-b border-neutral-100 text-[10px] font-mono">
-              <span className="font-semibold text-neutral-900 uppercase">Editorial Architecture</span>
-              <span className="text-neutral-500">Theme Built</span>
-            </div>
-            <div className="space-y-2">
-              <div className="h-3 w-4/5 bg-neutral-900 rounded-xs" />
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                <div className="h-8 bg-neutral-50 border border-neutral-100 rounded-xs p-1.5 space-y-1">
-                  <div className="h-1.5 w-10 bg-neutral-400 rounded-xs" />
-                  <div className="h-1.5 w-full bg-neutral-200 rounded-xs" />
-                </div>
-                <div className="h-8 bg-neutral-50 border border-neutral-100 rounded-xs p-1.5 space-y-1">
-                  <div className="h-1.5 w-10 bg-neutral-400 rounded-xs" />
-                  <div className="h-1.5 w-full bg-neutral-200 rounded-xs" />
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400 pt-1 border-t border-neutral-100">
-              <span>ACF Pro Fields</span>
-              <span className="text-neutral-700 font-medium">Fast TTFB</span>
-            </div>
-          </>
-        )}
-      </div>
+      {/* Real Project Interface Screenshot */}
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block relative aspect-[16/10] w-full bg-neutral-100 overflow-hidden cursor-pointer"
+        aria-label={`Open live website for ${project.title}`}
+      >
+        <Image
+          src={project.coverImage}
+          alt={`${project.title} live interface`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+          priority={Boolean(project.featured)}
+        />
+      </a>
     </div>
   );
 }

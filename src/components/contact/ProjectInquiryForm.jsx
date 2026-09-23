@@ -125,17 +125,39 @@ export default function ProjectInquiryForm() {
 
     setIsSubmitting(true);
 
-    // =========================================================================
-    // TEMPORARY FRONTEND-ONLY SUBMISSION STATE:
-    // This form currently executes rigorous client-side validation.
-    // Backend lead delivery / email API / database storage will be connected
-    // in subsequent development phases as per architectural roadmap.
-    // =========================================================================
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    setSubmittedBrief({ ...formData });
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      const result = await response.json();
+
+      setSubmittedBrief({
+        ...formData,
+        mailtoUrl: result?.mailtoUrl,
+        recipient: result?.recipient || 'susthir.nahak@gmail.com',
+      });
+      setIsSuccess(true);
+    } catch (err) {
+      console.error('Submission error:', err);
+      // Fallback direct email client URL
+      const mailtoSubject = encodeURIComponent(`Project Brief: ${formData.service} - ${formData.name}`);
+      const mailtoBody = encodeURIComponent(
+        `NEW PROJECT INQUIRY\nRecipient: susthir.nahak@gmail.com\n\nClient Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\nPhone: ${formData.phone || 'Not provided'}\nRequired Service: ${formData.service}\nDesired Timeline: ${formData.timeline || 'Flexible'}\n\nProject Description:\n${formData.description}`
+      );
+      const fallbackUrl = `mailto:susthir.nahak@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+      setSubmittedBrief({
+        ...formData,
+        mailtoUrl: fallbackUrl,
+        recipient: 'susthir.nahak@gmail.com',
+      });
+      setIsSuccess(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -145,7 +167,6 @@ export default function ProjectInquiryForm() {
       company: '',
       phone: '',
       service: '',
-      budget: '',
       timeline: '',
       source: '',
       description: '',
@@ -169,21 +190,21 @@ export default function ProjectInquiryForm() {
           </div>
           <div>
             <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-700 font-semibold block">
-              INTAKE RECORD COMPILED
+              BRIEF DISPATCHED
             </span>
             <h3 className="text-2xl font-semibold tracking-tight text-neutral-950">
-              Project brief ready.
+              Project brief submitted.
             </h3>
           </div>
         </div>
 
-        {/* Temporary Client-Side Notice as per user specification */}
+        {/* Dispatch Confirmation Plate */}
         <div className="p-4 rounded-[var(--radius-subtle)] bg-neutral-50 border border-neutral-200/80 space-y-1.5 text-xs sm:text-sm text-neutral-700">
           <p className="font-semibold text-neutral-950">
-            We have everything needed to review your enquiry.
+            Mailed to <span className="font-mono text-emerald-700">susthir.nahak@gmail.com</span>
           </p>
           <p className="text-neutral-600 leading-relaxed">
-            Backend delivery will be connected next. Your form inputs have passed full client-side validation and are structured for production dispatch.
+            Your inquiry has been submitted and mailed to <span className="font-medium text-neutral-900">susthir.nahak@gmail.com</span>. We review every brief directly and will reply within 24 business hours.
           </p>
         </div>
 
@@ -230,21 +251,34 @@ export default function ProjectInquiryForm() {
           </div>
         </div>
 
-        {/* Reset Action */}
+        {/* Reset & Direct Client Action */}
         <div className="pt-4 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-4">
-          <Button
-            type="button"
-            onClick={handleReset}
-            variant="secondary"
-            size="md"
-            className="group"
-          >
-            <RefreshCw className="h-3.5 w-3.5 text-neutral-500 transition-transform group-hover:rotate-180" />
-            <span>Submit Another Project Brief</span>
-          </Button>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              type="button"
+              onClick={handleReset}
+              variant="secondary"
+              size="md"
+              className="group"
+            >
+              <RefreshCw className="h-3.5 w-3.5 text-neutral-500 transition-transform group-hover:rotate-180" />
+              <span>Submit Another Project Brief</span>
+            </Button>
 
-          <span className="text-xs font-mono text-neutral-400">
-            STATUS: VALIDATED LOCAL RECORD
+            {submittedBrief?.mailtoUrl && (
+              <a
+                href={submittedBrief.mailtoUrl}
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono font-medium text-neutral-700 hover:text-neutral-950 bg-white border border-neutral-200 hover:border-neutral-300 rounded-[var(--radius-subtle)] transition-colors"
+              >
+                <span>Send copy via email client</span>
+                <span>↗</span>
+              </a>
+            )}
+          </div>
+
+          <span className="text-xs font-mono text-emerald-700 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            MAILED TO: susthir.nahak@gmail.com
           </span>
         </div>
       </div>

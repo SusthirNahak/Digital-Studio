@@ -5,7 +5,7 @@ import Section from '@/components/ui/Section';
 import FinalCTA from '@/components/home/FinalCTA';
 import ContactHero from '@/components/contact/ContactHero';
 import ProjectInquiryForm from '@/components/contact/ProjectInquiryForm';
-import ContactDetails, { DirectChannelsCard, EngagementStandardsCard } from '@/components/contact/ContactDetails';
+import ContactDetails, { DirectChannelsCard } from '@/components/contact/ContactDetails';
 import ContactProcess from '@/components/contact/ContactProcess';
 
 export const metadata = {
@@ -31,24 +31,19 @@ export default function ContactPage() {
           <Container size="default">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
               
-              {/* Mobile-only Direct Channels (WhatsApp / Email) rendered before the form */}
+              {/* Mobile-only Direct Channels (WhatsApp) rendered before the form */}
               <div className="lg:hidden w-full">
                 <DirectChannelsCard />
               </div>
 
               {/* Main Column: Project Inquiry Form (Left / Larger column) */}
-              <div className="lg:col-span-7 xl:col-span-8 w-full">
+              <div className="lg:col-span-7 w-full">
                 <ProjectInquiryForm />
               </div>
 
-              {/* Desktop Sticky Sidebar (Right / Narrower column) */}
-              <div className="hidden lg:block lg:col-span-5 xl:col-span-4 w-full">
+              {/* Desktop Sticky Sidebar (Right / Dedicated column) */}
+              <div className="hidden lg:block lg:col-span-5 w-full">
                 <ContactDetails />
-              </div>
-
-              {/* Mobile-only Engagement Standards rendered after the form */}
-              <div className="lg:hidden w-full">
-                <EngagementStandardsCard />
               </div>
 
             </div>
